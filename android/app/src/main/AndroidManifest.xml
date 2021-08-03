@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.mattatito.summoner_stats">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="summoner_stats"
         android:icon="@mipmap/ic_launcher">
