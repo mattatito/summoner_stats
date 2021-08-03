@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:summoner_stats/screens/dashboard/dashboard_card.dart';
+import 'package:summoner_stats/screens/dashboard/widget/dashboard_card.dart';
 
 class DashBoardScreen extends StatefulWidget {
   DashBoardScreen({Key key}) : super(key: key);
@@ -17,10 +17,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         child: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
             return Container(
-                padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
-                height: 150,
-                width: double.maxFinite,
-                child: DashBoardCard());
+              padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
+              height: 150,
+              width: double.maxFinite,
+              child: DashBoardCard(),
+            );
           },
         ),
       ),

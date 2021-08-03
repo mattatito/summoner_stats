@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:summoner_stats/screens/dashboard/circle_item.dart';
-import 'package:summoner_stats/screens/dashboard/square_item.dart';
+import 'package:summoner_stats/screens/dashboard/widget/circle_item.dart';
+import 'package:summoner_stats/screens/dashboard/widget/square_item.dart';
 
 class DashBoardCardContent extends StatelessWidget {
   const DashBoardCardContent({Key key}) : super(key: key);

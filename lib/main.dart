@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:summoner_stats/screens/dashboard/dashboard_screen.dart';
 import 'package:summoner_stats/screens/home/home_screen.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: DashBoardScreen(),
     );
   }
 }
