@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:summoner_stats/screens/home/widgets/summoner_card_avatar.dart';
+import 'package:summoner_stats/screens/home/widgets/summoner_card_content.dart';
 
 class SummonerCardWidget extends StatelessWidget {
   final String tipo;
@@ -13,71 +15,33 @@ class SummonerCardWidget extends StatelessWidget {
     @required this.elo,
     @required this.livingPoints,
     @required this.wins,
-    @required this.looses
+    @required this.looses,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return GestureDetector(
       onTap: () {},
       child: Container(
         height: screenHeight * 0.18,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20)),
-        margin: const EdgeInsets.symmetric(horizontal: 30),
-        child: Row(
+        width: screenWidth * 0.80,
+        margin: EdgeInsets.symmetric(vertical: 16.0, horizontal: 10.0),
+        child: Stack(
           children: [
-            Container(
-              margin: EdgeInsets.all(10),
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(100.0),
-              ),
+            SummonerCardContent(
+              tipo: tipo,
+              elo: elo,
+              livingPoints: livingPoints,
+              wins: wins,
+              looses: looses,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(tipo),
-                SizedBox(
-                  height: 3,
-                ),
-                Text(
-                  elo,
-                  style: TextStyle(
-                    color: Colors.blueAccent,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                SizedBox(
-                  height: 3,
-                ),
-                Text.rich(
-                  TextSpan(
-                      text: "$livingPoints LP",
-                      style: TextStyle(fontWeight: FontWeight.w700),
-                      children: [
-                        TextSpan(
-                          text: "/ ${wins}V ${looses}L",
-                          style: TextStyle(fontWeight: FontWeight.w400),
-                        ),
-                      ]),
-                ),
-                Text("Taxa de Vitória ${_getWinRate().toStringAsFixed(0)}%"),
-              ],
-            )
+            SummonerCardAvatar(),
           ],
         ),
       ),
     );
-  }
-
-  double _getWinRate(){
-    return  (wins / (wins+looses)) * 100 ;
   }
 }
