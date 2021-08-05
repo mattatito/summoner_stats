@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:summoner_stats/screens/dashboard/widget/circle_item.dart';
-import 'package:summoner_stats/screens/dashboard/widget/square_item.dart';
+import 'package:summoner_stats/models/match_model.dart';
+import 'package:summoner_stats/screens/dashboard/widgets/square_item.dart';
+
+import 'circle_item.dart';
 
 class DashBoardCardContent extends StatelessWidget {
-  const DashBoardCardContent({Key key}) : super(key: key);
+  const DashBoardCardContent({Key key, this.matchDetails}) : super(key: key);
+  final ParticipantMatch matchDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class DashBoardCardContent extends StatelessWidget {
             flex: 2,
             child: Row(
               children: [
-                CircleItem(size: 44),
+                CircleItem(size: 44, championName: matchDetails.championName),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [SquareItem(size: 20), SquareItem(size: 20)],
@@ -32,7 +35,7 @@ class DashBoardCardContent extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "99 / 99 / 99",
+                        "${matchDetails.kills} / ${matchDetails.deaths} / ${matchDetails.assists}",
                         style: TextStyle(fontSize: 18),
                       ),
                     ],
@@ -44,14 +47,15 @@ class DashBoardCardContent extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Row(
-              children: [
-                SquareItem(size: 30),
-                SquareItem(size: 30),
-                SquareItem(size: 30),
-                SquareItem(size: 30),
-                SquareItem(size: 30),
-                SquareItem(size: 30),
-                CircleItem(size: 30)
+              children:
+              [
+                SquareItem(size: 30, itemImageId: matchDetails.item0,),
+                SquareItem(size: 30, itemImageId: matchDetails.item1),
+                SquareItem(size: 30, itemImageId: matchDetails.item2),
+                SquareItem(size: 30, itemImageId: matchDetails.item3),
+                SquareItem(size: 30, itemImageId: matchDetails.item4),
+                SquareItem(size: 30, itemImageId: matchDetails.item5),
+                CircleItem(size: 30, championName: matchDetails.championName)
               ],
             ),
           ),

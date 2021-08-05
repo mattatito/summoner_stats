@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class DashBoardCardBorder extends StatelessWidget {
-  const DashBoardCardBorder({Key key}) : super(key: key);
+  const DashBoardCardBorder({Key key, @required this.win}) : super(key: key);
+  final bool win;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
       width: 50,
-      color: Colors.red,
+      color: win ? Colors.green : Colors.red,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "V",
+            win ? "V" : "D",
             style: TextStyle(
                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.w800),
           ),
